@@ -13,6 +13,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Exercice1 extends Application {
@@ -83,10 +84,34 @@ public class Exercice1 extends Application {
 
         pane.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.SECONDARY) {
-                Text texte = new Text("Vous avez cliqué droit sur le panneau")
+                Text texte = new Text("Vous avez cliqué droit sur le panneau");
+
+                // endroit du clic
+                texte.setLayoutX(e.getX());
+                texte.setLayoutY(e.getY());
+
+                // police
+                texte.setStyle("-fx-font-weight: bold; -fx-font-size: 15px;");
+
+                // couleur
+                texte.setFill(Color.WHITE);
+
+                // contour
+                texte.setStroke(Color.BLACK);
+
+                // ajout du texte au pane
+                pane.getChildren().add(texte);
             }
-        });
+
+            if (e.getButton() == MouseButton.PRIMARY) {
+                pane.getChildren().clear();                
+            }
+
+        });     
+        cercle.setFocusTraversable(true);
+        rectangle.setFocusTraversable(true);
     }
+        
 
 
     public static void main(String[] args) {
